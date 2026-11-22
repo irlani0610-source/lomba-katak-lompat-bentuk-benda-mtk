@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Lomba Katak: Berbagai Bentuk Benda</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",sans-serif;background:linear-gradient(#9fe0ff,#e6f8ff);color:#24456b;min-height:100vh}
+#app{max-width:880px;margin:auto;padding:10px}
+.scr{display:none}.scr.on{display:block}
+.card{background:#fff;border-radius:28px;padding:18px;box-shadow:0 8px 0 #7cc4ee,0 14px 24px #0003;margin-bottom:16px;text-align:center}
+h1{font-size:clamp(26px,6vw,42px);margin:6px 0;color:#1b8a3a;text-shadow:0 3px 0 #bff0c8}
+input{font:inherit;font-size:22px;padding:10px 14px;border-radius:16px;border:3px solid #7cc4ee;margin:6px;width:min(320px,90%);text-align:center}
+.btn{font:inherit;font-size:22px;font-weight:800;border:0;border-radius:20px;padding:10px 22px;background:linear-gradient(#ffd54a,#ffa726);box-shadow:0 6px 0 #c77800;cursor:pointer;color:#5a3000;margin:6px}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c77800}
+.btn.ok{background:linear-gradient(#8bea8b,#2fb344);box-shadow:0 6px 0 #1c7a2c;color:#fff}
+.btn.bad{background:linear-gradient(#ff8a80,#e53935);box-shadow:0 6px 0 #9b1c1c;color:#fff}
+#hd{font-weight:800;font-size:18px;margin-bottom:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+#pond{position:relative;height:200px;border-radius:28px;overflow:hidden;margin-bottom:14px;background:linear-gradient(#a8e6ff 0 32%,var(--w1,#4fc3f7) 32%,var(--w2,#0288d1));box-shadow:0 8px 0 #0a5f8f,0 12px 20px #0003}
+.dec{position:absolute;font-size:34px}
+.bank,.shore{position:absolute;top:104px;bottom:0;background:linear-gradient(#8bd35a,#4e9a2e 40%,#a67c52 41%);z-index:1}
+.bank{left:0;width:9%;border-radius:0 40px 0 0}.shore{right:0;width:13%;border-radius:40px 0 0 0;font-size:34px;text-align:center}
+.pad{position:absolute;top:116px;width:58px;height:30px;border-radius:50%;background:radial-gradient(ellipse at 40% 30%,#b6f06c,#2e9e3f);box-shadow:0 7px 0 #1e6f2c,0 12px 10px #0005;transform:translateX(-50%);z-index:2}
+.pad:after{content:"🪷";position:absolute;font-size:16px;left:20px;top:-8px}
+#frog{position:absolute;top:70px;left:5%;font-size:56px;line-height:1;transform:translateX(-50%);transition:left .8s ease-in-out;z-index:3;filter:drop-shadow(0 6px 3px #0006)}
+#frog span{display:inline-block}
+.hop{animation:hop .8s}@keyframes hop{50%{transform:translateY(-55px) scale(1.15) rotate(-8deg)}}
+.sink span{animation:sink 1.2s forwards}@keyframes sink{30%{transform:rotate(25deg)}100%{transform:translateY(80px) scale(.4);opacity:0}}
+.dance span{animation:dance .45s infinite alternate}@keyframes dance{from{transform:translateY(0) rotate(-14deg)}to{transform:translateY(-50px) rotate(14deg) scale(1.15)}}
+.qt{font-size:clamp(20px,4.5vw,28px);font-weight:800}
+.vis{min-height:76px;margin:8px 0;font-size:24px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+.em{font-size:68px}
+.opts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.opts .btn{display:flex;align-items:center;gap:8px;font-size:21px}
+#msg{min-height:36px;font-size:22px;font-weight:800;margin-top:8px}.g{color:#1b8a3a}.r{color:#c62828}
+#ov{display:none;position:fixed;inset:0;background:#0007;z-index:9;align-items:center;justify-content:center;padding:16px}
+#ov.on{display:flex}#ov .card{max-width:420px}
+.big{font-size:64px;font-weight:800;color:#e65100}
+#cert{border:10px double #d4a017;background:#fffbea;padding:22px;border-radius:12px;text-align:center}
+#cert h2{font-size:clamp(28px,6vw,44px);margin:0;color:#b8860b}
+#cert .nm{font-size:clamp(28px,6vw,40px);font-weight:800;border-bottom:3px dotted #b8860b;display:inline-block;padding:0 24px;margin:6px 0}
+@media print{@page{size:A4 landscape;margin:12mm}body *{visibility:hidden}#cert,#cert *{visibility:visible}#cert{position:absolute;left:0;top:0;width:100%}}
+</style></head><body><div id="app">
+
+<div class="scr on" id="s0"><div class="card">
+<div style="font-size:70px">🐸🪷</div><h1>Lomba Katak Bentuk Benda</h1>
+<p style="font-size:20px">Matematika Kelas 1 · Bab 4: Berbagai Bentuk Benda<br>Jawab dengan benar agar katak melompat sampai daratan!</p>
+<input id="nm" placeholder="Nama kamu" maxlength="30"><br><input id="kl" placeholder="Kelas (contoh: 1A)" maxlength="10"><br>
+<button class="btn" id="go0" style="font-size:28px">▶ Mulai Lomba</button></div></div>
+
+<div class="scr" id="s1">
+<div id="pond"><div class="dec" style="left:8%;top:10px">☁️</div><div class="dec" style="left:55%;top:4px">☁️</div><div class="dec" style="right:4%;top:6px;font-size:44px">☀️</div>
+<div class="bank"></div><div class="shore">🌴<br>🏁</div><div id="pads"></div><div id="frog"><span>🐸</span></div></div>
+<div class="card"><div id="hd"></div><div id="qb"></div><div id="msg"></div></div></div>
+
+<div class="scr" id="s2"><div class="card"><h1>🎉 Lomba Selesai! 🎉</h1><div>Skor total</div><div class="big" id="sc"></div><div id="st" style="font-size:40px"></div>
+<button class="btn" onclick="window.print()">🖨️ Print Sertifikat</button><button class="btn" onclick="location.reload()">🔁 Main Lagi</button></div>
+<div id="cert"><div style="font-size:48px">🏆🐸🏆</div><h2>SERTIFIKAT</h2><p style="font-size:20px;margin:4px">Diberikan kepada:</p><div class="nm" id="cn"></div>
+<p style="font-size:20px;margin:4px">Kelas <b id="ck"></b></p><p style="font-size:20px;margin:4px">telah menyelesaikan Lomba Katak<br>Matematika Kelas 1 · Berbagai Bentuk Benda</p>
+<p style="font-size:26px;font-weight:800;margin:6px">Skor: <span id="cs"></span> / 100</p><p style="font-size:26px;margin:4px;color:#1b8a3a;font-weight:800" id="cm"></p>
+<p style="margin:6px;font-size:16px" id="cd"></p></div></div>
+</div>
+<div id="ov"><div class="card"><div style="font-size:60px">🌴🐸</div><h1 id="ot"></h1><p id="op" style="font-size:22px"></p><button class="btn" id="ob">Lanjut ▶</button></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const COL={T:'#ff7043',S:'#42a5f5',C:'#ab47bc'};
+function sh(t,c,s=64){c=c||COL[t];const p=t=='C'?`<circle cx="32" cy="32" r="28" fill="${c}"/>`:t=='T'?`<polygon points="32,5 59,57 5,57" fill="${c}"/>`:`<rect x="6" y="8" width="52" height="48" rx="4" fill="${c}"/>`;return `<svg width="${s}" height="${s}" viewBox="0 0 64 64">${p}</svg>`}
+const row=a=>a.map(x=>typeof x=='string'?sh(x):sh(x[0],x[1])).join('');
+const em=e=>`<span class="em">${e}</span>`;
+const N=['Segitiga','Segi empat','Lingkaran'];
+const mc=(q,v,o,a)=>({t:'mc',q,v,o,a});
+const tf=(q,v,a)=>({t:'tf',q,v,a:a?0:1});
+const mt=(e,n,a)=>({t:'mt',v:em(e)+`<b>${n}</b>`,n,a});
+const fi=(q,v,a)=>({t:'fi',q,v,a});
+const L=[[
+mc('Gambar ini berbentuk apa?',row(['C']),N,2),
+mc('Roda sepeda berbentuk ....',em('🛞'),['Segi empat','Segitiga','Lingkaran'],2),
+mc('Gambar ini berbentuk apa?',row(['T']),['Lingkaran','Segitiga','Segi empat'],1),
+mc('Gambar ini berbentuk apa?',row(['S']),N,1),
+mc('Koin berbentuk ....',em('🪙'),['Lingkaran','Segi empat','Segitiga'],0),
+mc('Bentuk jendela umumnya ....',em('🪟'),['Segitiga','Segi empat','Lingkaran'],1),
+mc('Permukaan jam dinding berbentuk ....',em('🕒'),['Segitiga','Lingkaran','Segi empat'],1),
+mc('Ada berapa segitiga pada gambar?',row(['T','T','T']),['2','3','4'],1),
+mc('Benda yang permukaannya berbentuk segi empat adalah ....',em('📕🪙⚠️'),['Buku','Koin','Rambu'],0),
+mc('Bangun datar yang memiliki sisi lengkung adalah ....','',['Segitiga','Segi empat','Lingkaran'],2)],
+[
+tf('Bangun segitiga memiliki tiga sisi.',row(['T']),1),
+tf('Lingkaran memiliki empat sisi lurus.',row(['C']),0),
+tf('Buku tulis berbentuk segi empat.',em('📒'),1),
+tf('Roda sepeda berbentuk segitiga.',em('🛞'),0),
+tf('Segitiga dan segi empat memiliki sisi lurus.',row(['T','S']),1),
+tf('Semua gambar ini berbentuk lingkaran.',row(['C','C','C']),1),
+tf('Semua gambar ini berbentuk lingkaran.',row(['C','S','C']),0),
+tf('Jam dinding berbentuk segi empat.',em('🕒'),0),
+tf('Dua segitiga dapat disusun menjadi bangun baru.',row(['T','T']),1),
+tf('Bangun datar dapat dikelompokkan berdasarkan bentuk, warna, dan ukuran.','',1)],
+[mt('🛞','Roda sepeda',2),mt('📐','Penggaris segitiga',0),mt('🚪','Pintu',1),mt('🕒','Jam dinding',2),mt('⚠️','Rambu peringatan',0),
+mt('🪙','Koin uang',2),mt('📕','Buku',1),mt('🍕','Potongan pizza',0),mt('🟫','Permukaan meja',1),mt('🪞','Cermin bulat',2)],
+[
+fi('Nama bangun datar pada gambar adalah ....',row(['T']),['segitiga']),
+fi('Permukaan jam dinding berbentuk ....',em('🕒'),['lingkaran','bulat']),
+fi('Bentuk permukaan buku tulis adalah ....',em('📒'),['segiempat','persegi','persegipanjang']),
+fi('Hitunglah jumlah lingkaran berikut!',row(['C','C','C','C']),['4','empat']),
+fi('Hitunglah jumlah segitiga berikut!',row(['T','S','T','C','T']),['3','tiga']),
+fi('Bangun datar yang memiliki sisi lengkung adalah ....','',['lingkaran']),
+fi('Gambar ini dikelompokkan berdasarkan ....',row([['C','#e53935'],['C','#43a047'],['C','#fdd835']]),['bentuk']),
+fi('Segitiga memiliki berapa sisi lurus?',row(['T']),['3','tiga']),
+fi('Segi empat memiliki berapa sisi?',row(['S']),['4','empat']),
+fi('Dua segitiga disusun menjadi bangun baru. Jumlah segitiga yang digunakan adalah ....',row(['T','T']),['2','dua'])]];
+const LN=['Sangat Mudah','Mudah','Sedang','Sulit'];
+const W=[['#4fc3f7','#0288d1'],['#4dd0e1','#00838f'],['#4db6ac','#00695c'],['#7986cb','#303f9f']];
+let ac,lv=0,qi=0,pos=0,cor=0,lvc=0,lock=0,nama,kelas;
+function tone(f,t,d,ty='sine',v=.2){const o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime+t;o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,n);g.gain.exponentialRampToValueAtTime(.001,n+d);o.connect(g);g.connect(ac.destination);o.start(n);o.stop(n+d)}
+const S={ok:()=>[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.25)),
+no:()=>[330,277,233,196].forEach((f,i)=>tone(f,i*.18,.3,'sawtooth',.12)),
+lv:()=>[392,523,659,784,1047].forEach((f,i)=>tone(f,i*.12,.3,'triangle')),
+win:()=>[523,523,659,784,659,784,1047,1047,1319,1047,1319,1568].forEach((f,i)=>tone(f,i*.16,.3,'triangle',.25))};
+const snd=k=>{try{S[k]()}catch(e){}};
+const padX=i=>12+i*8.2, fx=s=>s?padX(s-1):5;
+const frog=()=>$('frog');
+function hop(){const s=frog().firstChild;s.classList.remove('hop');void s.offsetWidth;s.classList.add('hop')}
+function setLevel(){pos=0;qi=0;lvc=0;const f=frog();f.style.transition='none';f.style.left='5%';void f.offsetWidth;f.style.transition='';
+const p=$('pond');p.style.setProperty('--w1',W[lv][0]);p.style.setProperty('--w2',W[lv][1]);
+$('pads').innerHTML=Array.from({length:10},(_,i)=>`<div class="pad" style="left:${padX(i)}%"></div>`).join('');show()}
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
+function show(){lock=0;const q=L[lv][qi];$('msg').textContent='';$('msg').className='';
+$('hd').innerHTML=`<span>Level ${lv+1}: ${LN[lv]}</span><span>Soal ${qi+1}/10</span><span>⭐ ${cor*2.5}</span>`;
+let h=`<div class="qt">${q.q||'Pasangkan benda ini dengan bangun yang tepat!'}</div><div class="vis">${q.v||''}</div>`;
+if(q.t=='fi')h+=`<input id="fi" autocomplete="off" placeholder="Ketik jawabanmu"><br><button class="btn" id="fg">Jawab ✔</button>`;
+else{const o=q.t=='tf'?['✅ Benar','❌ Salah']:q.t=='mt'?N.map((n,i)=>sh('TSC'[i],null,40)+n):q.o;
+h+=`<div class="opts">`+o.map((x,i)=>`<button class="btn" data-i="${i}">${x}</button>`).join('')+`</div>`}
+$('qb').innerHTML=h;
+if(q.t=='fi'){const go=()=>{if(lock)return;const v=norm($('fi').value);if(!v)return;const ok=q.a.map(norm).includes(v);$('fi').disabled=true;ans(ok,q.a[0])};$('fg').onclick=go;$('fi').onkeydown=e=>{if(e.key=='Enter')go()};$('fi').focus()}
+else document.querySelectorAll('#qb .opts .btn').forEach(b=>b.onclick=()=>{if(lock)return;const i=+b.dataset.i,ok=i==q.a;const bs=document.querySelectorAll('#qb .opts .btn');b.classList.add(ok?'ok':'bad');bs[q.a].classList.add('ok');
+ans(ok,q.t=='tf'?(q.a?'Salah':'Benar'):q.t=='mt'?N[q.a]:q.o[q.a])})}
+function msg(t,c){$('msg').textContent=t;$('msg').className=c}
+function ans(ok,right){lock=1;
+if(ok){cor++;lvc++;pos++;snd('ok');frog().style.left=fx(pos)+'%';hop();msg('🎉 Hebat! Jawabanmu benar!','g')}
+else{snd('no');frog().classList.add('sink');msg('😢 Ups, katak tenggelam! Jawaban: '+right,'r');setTimeout(()=>frog().classList.remove('sink'),1300)}
+setTimeout(()=>{qi++;qi>=10?endLevel():show()},2000)}
+function endLevel(){frog().style.left='94%';hop();$('qb').innerHTML='<div class="qt">🐸 Katak sampai di daratan!</div>';
+if(lv<3){snd('lv');setTimeout(()=>{$('ot').textContent=`Level ${lv+1} selesai!`;$('op').textContent=`Kamu benar ${lvc} dari 10 soal. Ayo ke level ${lv+2}!`;$('ob').onclick=()=>{$('ov').classList.remove('on');lv++;setLevel()};$('ov').classList.add('on')},1500)}
+else{snd('win');setTimeout(()=>{frog().classList.add('dance');const p=$('pond');for(let i=0;i<14;i++){const d=document.createElement('div');d.className='dec';d.textContent=['🎉','⭐','🎊','✨'][i%4];d.style.left=(5+i*6.5)+'%';d.style.top=(5+(i%3)*22)+'px';d.style.zIndex=4;p.appendChild(d)}},900);setTimeout(finish,5000)}}
+function finish(){const sc=cor*2.5;$('s1').classList.remove('on');$('s2').classList.add('on');$('sc').textContent=sc+' / 100';
+$('st').textContent=sc>=90?'⭐⭐⭐':sc>=70?'⭐⭐':'⭐';
+$('cn').textContent=nama;$('ck').textContent=kelas;$('cs').textContent=sc;
+$('cm').textContent=sc>=90?'🥇 Katak Juara Emas':sc>=70?'🥈 Katak Juara Perak':'🥉 Katak Pemberani';
+$('cd').textContent='Tanggal: '+new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});snd('win')}
+$('go0').onclick=()=>{nama=$('nm').value.trim();kelas=$('kl').value.trim();if(!nama||!kelas){alert('Isi nama dan kelas dulu ya! 😊');return}
+try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}
+$('s0').classList.remove('on');$('s1').classList.add('on');setLevel()};
+</script></body></html>
